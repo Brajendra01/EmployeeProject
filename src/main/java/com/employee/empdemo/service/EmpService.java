@@ -11,5 +11,7 @@ public interface EmpService {
 	public List<Employee> getEmpList();
 	
 	public Employee getEmpById(String id);
+	
+	public void createEmp(Employee employee);
 
 }

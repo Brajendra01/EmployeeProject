@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.employee.empdemo.dao.EmpDao;
 import com.employee.empdemo.enity.Employee;
 
 @Service
 public class EmpServiceImpl implements EmpService{
+	
+	@Autowired
+	EmpDao empDao;
 
 	@Override
 	public Employee getEmpDetails() {
@@ -73,6 +78,11 @@ public class EmpServiceImpl implements EmpService{
 		
 		return emp;
 		
+	}
+
+	@Override
+	public void createEmp(Employee employee) {
+		empDao.saveEmp(employee);
 	}
 	
 	
