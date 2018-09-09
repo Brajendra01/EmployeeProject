@@ -64,6 +64,14 @@ public class EmpController {
 		return model;
 	}
 	
+	@RequestMapping(value = { "/adminPage"}, method = RequestMethod.GET)
+	public ModelAndView adminPage() {
+		System.out.println("adminPage():::");
+		ModelAndView model = new ModelAndView();
+		model.setViewName("adminPage");
+		return model;
+	}
+	
 	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
 	public ModelAndView loginPage(@RequestParam(value = "error",required = false) String error,
 	@RequestParam(value = "logout",	required = false) String logout) {
