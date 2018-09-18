@@ -2,6 +2,8 @@ package com.employee.empdemo.configuration;
 
 import java.util.Properties;
 
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
@@ -42,7 +44,10 @@ public class HibernateConfiguration {
 	 @Bean 
 	  public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		  LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+		  // which DB have to connect
 		  em.setDataSource(getDataSource()); 
+		  
+		  // mention where will hibernate search model. means path of all entity, or listed all @Entity class.
 		  em.setPackagesToScan(new String[]{"com.employee.empdemo.enity" }); 
 		  JpaVendorAdapter vendorAdapter =new HibernateJpaVendorAdapter(); 
 		  em.setJpaVendorAdapter(vendorAdapter);
@@ -62,9 +67,15 @@ public class HibernateConfiguration {
 	
 	public Properties getHibernateProperties(){
         Properties properties = new Properties();
+        
+        // dialect will configure or have knowledge of BD, which db we have to connect what will be query according DB,
+        // diffrent databse have different dialect like oracle, mysql etc.
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
+        // will show the fired query
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
+        
+        // auto create table in database for object or model.
         properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         return properties;
     

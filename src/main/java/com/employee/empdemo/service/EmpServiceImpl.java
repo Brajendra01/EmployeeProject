@@ -20,11 +20,7 @@ public class EmpServiceImpl implements EmpService{
 
 	@Override
 	public Employee getEmpDetails() {
-		Employee employee=new Employee();
-		employee.setId(100);
-		employee.setName("Ajay");
-		employee.setSal(5000);
-		return employee;
+		return empDao.getEmpDetails();
 	}
 	
 	@Override
