@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.employee.empdemo.dao.EmpDao;
 import com.employee.empdemo.enity.Employee;
+import com.employee.empdemo.enity.Vehicle;
 
 @Service
 public class EmpServiceImpl implements EmpService{
@@ -21,6 +22,11 @@ public class EmpServiceImpl implements EmpService{
 	@Override
 	public Employee getEmpDetails() {
 		return empDao.getEmpDetails();
+	}
+	
+	@Override
+	public void saveVehicleInheritance(Vehicle vehicle){
+		empDao.saveVehicleInheritance(vehicle);
 	}
 	
 	@Override
@@ -47,6 +53,7 @@ public class EmpServiceImpl implements EmpService{
 		
 		return empList;
 	}
+	
 	
 	@Override
 	public Employee getEmpById(String id){

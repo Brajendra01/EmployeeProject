@@ -19,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.employee.empdemo.enity.Address;
 import com.employee.empdemo.enity.Employee;
+import com.employee.empdemo.enity.FourWheeler;
 import com.employee.empdemo.enity.Phone;
+import com.employee.empdemo.enity.TwoWheeler;
 import com.employee.empdemo.enity.Vehicle;
 import com.employee.empdemo.service.EmpServiceImpl;
 
@@ -156,6 +158,26 @@ public class EmpController {
 		model.setViewName("loginPage");
 		return model;
 	}
-
+	
+	@RequestMapping(value="saveVehicleInheritance",method=RequestMethod.GET)
+	public void saveVehicleInheritance(){
+		
+		Vehicle vehicle=new Vehicle();
+		vehicle.setVehName("car");
+		
+		FourWheeler car=new FourWheeler();
+		car.setVehName("Äudi");
+		car.setSteeringWheel("Audi Steering wheel");
+		
+		TwoWheeler bike=new TwoWheeler();
+		bike.setVehName("pulsar");
+		bike.setSteeringHandle("Bajaj Steering handle");
+		
+		empService.saveVehicleInheritance(vehicle);
+		empService.saveVehicleInheritance(bike);
+		empService.saveVehicleInheritance(car);
+		
+		
+	}
 
 }

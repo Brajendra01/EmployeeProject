@@ -34,6 +34,7 @@ import org.h2.util.New;
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.GenericGenerators;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Proxy;
 import org.hibernate.annotations.Type;
 
@@ -115,7 +116,7 @@ public class Employee {
 	// in both case table will not be created but diffrent column will be created as street for office address and HOME_STREET for home address.
 	@Embedded
 	private Address officeAddress;*/
-	
+
 	
 	public Collection<Vehicle> getListVeh() {
 		return listVeh;

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.employee.empdemo.enity.Employee;
+import com.employee.empdemo.enity.Vehicle;
 
 @Transactional
 @Repository
@@ -29,6 +30,8 @@ public class EmpDaoImpl implements EmpDao{
 		//return (List<Employee>) sessionFactory.getCurrentSession().createCriteria(Employee.class).list();
 	}
 	
-	
+	public void saveVehicleInheritance(Vehicle vehicle){
+		sessionFactory.getCurrentSession().save(vehicle);
+	}
 
 }

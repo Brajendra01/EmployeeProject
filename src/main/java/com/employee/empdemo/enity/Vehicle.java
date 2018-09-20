@@ -1,8 +1,12 @@
 package com.employee.empdemo.enity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 // One to one mapping, employee has one vehicle or will come via one vehicle.
@@ -10,6 +14,8 @@ import javax.persistence.ManyToOne;
 //its separate class and will have separate table, later will have one to one relation with employee table.
 
 @Entity
+//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Vehicle {
 	
 	@Id
@@ -18,7 +24,8 @@ public class Vehicle {
 	
 	private String vehName;
 	
-	@ManyToOne    // all vehicle has owner
+/*	@ManyToOne(cascade=CascadeType.ALL)    // all vehicle has owner
+	@JoinColumn(name="ID")
 	private Employee  employee;
 
 	public Employee getEmployee() {
@@ -27,7 +34,7 @@ public class Vehicle {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-	}
+	}*/
 
 	public String getVehName() {
 		return vehName;
